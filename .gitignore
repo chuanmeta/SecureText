@@ -1,0 +1,11 @@
+# vscode
+.vscode
+
+# be
+/be/.mvn
+/be/target
+
+# fe
+/fe/.angular
+/fe/.vscode
+/fe/node_modules
