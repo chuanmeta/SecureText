@@ -1,11 +1,13 @@
 
 from fastapi import FastAPI
-from text_service import random_text
+from .services import io_service as io
 
 app = FastAPI()
+RES_ROOT = "res"
+FONTS_ROOT = f"{RES_ROOT}/fonts"
 
-@app.get("/welcome")
-def hello(name: str = "Việt Nam"):
+@app.get("/mkdir")
+def fonts():
     return {
-        "text": random_text()
+        "path": io.createDirectory(FONTS_ROOT)
     }

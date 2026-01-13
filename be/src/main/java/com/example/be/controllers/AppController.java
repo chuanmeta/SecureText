@@ -2,20 +2,30 @@ package com.example.be.controllers;
 
 import java.util.Map;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.client.RestTemplate;
 
 
 @RestController
 public class AppController {
+
+    @Autowired
+    RestTemplate rt;
+
+    @Value("${python.service.url}")
+    private String pythonServiceUrl;
     
-    @GetMapping("/wellcome")
-    public ResponseEntity wellcome() {
-        Map<String, String> data = Map.of("title", "welcome");
-        return ResponseEntity.ok(data);
+    @GetMapping("/mkdir")
+    public ResponseEntity<?> wellcome() {
+
+
+        Object obj = rt.getForObject(pythonServiceUrl + "/mkdir", String.class);
+
+        return ResponseEntity.ok(obj);
     }
     
 }
