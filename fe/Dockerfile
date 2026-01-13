@@ -12,7 +12,6 @@ RUN npm run build --prod
 
 #
 FROM nginx:latest
-
 COPY --from=build /app/dist/fe/browser /usr/share/nginx/html
 
 EXPOSE 80
