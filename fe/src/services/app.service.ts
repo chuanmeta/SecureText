@@ -7,6 +7,6 @@ export class AppService {
     constructor(private http: HttpClient){}
 
     public app():Observable<any>{
-        return this.http.get<any>(`http://localhost:8080/wellcome`)
+        return this.http.get<any>(`/api/mkdir`)
     }
 }
