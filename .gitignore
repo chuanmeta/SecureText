@@ -9,3 +9,6 @@
 /fe/.angular
 /fe/.vscode
 /fe/node_modules
+
+# other
+installed.txt
