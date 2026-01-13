@@ -1,12 +1,20 @@
-# Stage 1: build Angular
-FROM node:24.12.0 AS build
+FROM node:24 AS build
+
 WORKDIR /app
+
 COPY package*.json ./
-RUN npm install
+
+RUN npm install --force
+
 COPY . .
+
 RUN npm run build --prod
 
-# Stage 2: serve bằng nginx
-# FROM nginx:alpine
-# COPY --from=build /app/dist/fe /usr/share/nginx/html
-# COPY ./nginx/nginx.conf /etc/nginx/conf.d/default.conf
+#
+FROM nginx:latest
+
+COPY --from=build /app/dist/fe/browser /usr/share/nginx/html
+
+EXPOSE 80
+
+CMD ["nginx", "-g", "daemon off;"]
