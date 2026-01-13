@@ -9,7 +9,7 @@ networks:
 
 services:
   nginx:
-    image: nginx:lastes
+    image: nginx:latest
     container_name: nginx
     ports:
       - "80:80"

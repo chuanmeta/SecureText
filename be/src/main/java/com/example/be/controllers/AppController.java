@@ -23,9 +23,9 @@ public class AppController {
     public ResponseEntity<?> wellcome() {
 
 
-        Object obj = rt.getForObject(pythonServiceUrl + "/mkdir", String.class);
+        // Object obj = rt.getForObject(pythonServiceUrl + "/mkdir", String.class);
 
-        return ResponseEntity.ok(obj);
+        return ResponseEntity.ok(Map.of("name", "springboot"));
     }
     
 }
