@@ -8,20 +8,15 @@ networks:
     internal: true # Không public
 
 services:
-  nginx:
-    image: nginx:latest
-    container_name: nginx
-    ports:
-      - "80:80"
-    volumes:
-      - ./nginx/nginx.conf:/etc/nginx/conf.d/default.conf
-      - ./fe/dist:/usr/share/nginx/html
-    depends_on:
-      - springboot
-    networks:
-      - frontend
-      - backend
   
+  # python-service:
+  #   build: ./python
+  #   container_name: python-service
+  #   expose:
+  #     - "8000"  # nội bộ
+  #   networks:
+  #     - backend
+
   springboot:
     build: ./be
     container_name: springboot
@@ -38,14 +33,22 @@ services:
       - nginx
     networks:
       - frontend
+    volumes:
+      - ./fe/dist:/app/dist
 
-  # python-service:
-  #   build: ./python
-  #   container_name: python-service
-  #   expose:
-  #     - "8000"  # nội bộ
-  #   networks:
-  #     - backend
+  nginx:
+    image: nginx:latest
+    container_name: nginx
+    ports:
+      - "80:80"
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/conf.d/default.conf
+      - ./fe/dist/fe/browser:/usr/share/nginx/html
+    depends_on:
+      - springboot
+    networks:
+      - frontend
+      - backend
 
 
   
