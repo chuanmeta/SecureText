@@ -20,6 +20,8 @@ services:
   springboot:
     build: ./be
     container_name: springboot
+    expose: 
+      - "8080"
     networks:
       - backend
       - frontend
