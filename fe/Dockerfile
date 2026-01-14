@@ -11,9 +11,9 @@ COPY . .
 RUN npm run build --prod
 
 #
-# FROM nginx:latest
-# COPY --from=build /app/dist/fe/browser /usr/share/nginx/html
+FROM nginx:latest
+COPY --from=build /app/dist/fe/browser /usr/share/nginx/html
 
-# EXPOSE 80
+EXPOSE 80
 
-# CMD ["nginx", "-g", "daemon off;"]
+CMD ["nginx", "-g", "daemon off;"]
