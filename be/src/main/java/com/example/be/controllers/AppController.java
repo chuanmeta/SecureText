@@ -8,6 +8,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
+import org.springframework.web.bind.annotation.RequestParam;
+
 
 
 @RestController
@@ -23,9 +25,16 @@ public class AppController {
     public ResponseEntity<?> wellcome() {
 
 
-        // Object obj = rt.getForObject(pythonServiceUrl + "/mkdir", String.class);
+        Object obj = rt.getForObject(pythonServiceUrl + "/mkdir", String.class);
 
-        return ResponseEntity.ok(Map.of("name", "springboot"));
+        // return ResponseEntity.ok(Map.of("name", "springboot"));
+        return ResponseEntity.ok(obj);
     }
+
+    @GetMapping("/")
+    public ResponseEntity<?> appInfo() {
+        return ResponseEntity.ok(rt.getForObject(pythonServiceUrl + "/", String.class));
+    }
+    
     
 }
