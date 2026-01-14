@@ -1,6 +1,6 @@
 
 from fastapi import FastAPI
-from .services import io_service as io
+from services import io_service as io
 
 app = FastAPI()
 RES_ROOT = "res"
