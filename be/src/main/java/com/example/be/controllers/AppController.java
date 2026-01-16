@@ -6,9 +6,16 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
+import org.springframework.web.util.UriComponentsBuilder;
+
+import com.example.be.models.dtos.EncryptDTO;
+
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.PostMapping;
+
 
 
 
@@ -35,6 +42,35 @@ public class AppController {
     public ResponseEntity<?> appInfo() {
         return ResponseEntity.ok(rt.getForObject(pythonServiceUrl + "/", String.class));
     }
+
+    // Generate font
+    @PostMapping("/gen-font")
+    public ResponseEntity<?> postMethodName() {
+        return ResponseEntity.ok(rt.getForObject(pythonServiceUrl + "/create-font", Map.class));
+    }
     
+    
+    // Get Text Enpoint
+    @GetMapping("/get-text")
+    public ResponseEntity<?> getText(@RequestBody EncryptDTO dto) {
+
+        Map<String, String> body = Map.of("fontName", dto.font,
+            "text", dto.text
+        );
+
+        try {
+            @SuppressWarnings("unchecked")
+            Map<String, Object> map = rt.postForObject(pythonServiceUrl + "/encrypt",
+                body,
+                Map.class
+            );
+            return ResponseEntity.ok(map);
+        } catch (Exception e){
+            e.printStackTrace();
+        }
+
+        return ResponseEntity.ok(Map.of());
+        
+    }
     
 }

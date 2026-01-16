@@ -1,19 +1,19 @@
 
 from fastapi import FastAPI
-from services import io_service as io
+
+from services import font_service as fs
 
 app = FastAPI()
-RES_ROOT = "res"
-FONTS_ROOT = f"{RES_ROOT}/fonts"
 
-@app.get("/")
-def info():
+@app.post("/create-font")
+def createFont():
     return {
-        "name": "appname"
+        "font": fs.generateAndSaveFont(fs.generateMapping(0xE000))
     }
 
-@app.get("/mkdir")
-def fonts():
+@app.post("/encrypt")
+def encrypt(text: str, fontName: str):
     return {
-        "path": io.createDirectory(FONTS_ROOT)
+        "font": fs.getFont(fontName),
+        "data": fs.encode(text, fontName)
     }

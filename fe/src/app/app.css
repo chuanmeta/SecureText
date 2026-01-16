@@ -1,0 +1,8 @@
+@font-face {
+    font-family: "secure-text";
+    src: url("D:/Chuan/TestFontSwap/res/fonts/8ee888f8e7/8ee888f8e7.ttf") format("truetype");
+}
+
+.secure-text {
+    font-family: "secure-text";
+}

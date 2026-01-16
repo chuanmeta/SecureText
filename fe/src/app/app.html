@@ -1,1 +1,15 @@
-<router-outlet></router-outlet>
+<div>
+    <h2>Generate</h2>
+    <button (click)="generateFont()">Generate Font</button>
+    <div>
+        <p *ngFor="let log of logs; let i = index">{{log}}</p>
+    </div>
+</div>
+<hr>
+<div>
+    <h2>Text</h2>
+    <input type="text" [(ngModel)]="font">
+    <textarea type="text" [(ngModel)]="text"></textarea>
+    <button (click)="encrypt()">encrypt</button>
+    <div>{{decode}}</div>
+</div>
