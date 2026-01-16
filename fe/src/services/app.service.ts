@@ -16,6 +16,6 @@ export class AppService {
     }
 
     public genFont(): Observable<any>{
-        return this.http.post<any>(`/api/get-text`, {})
+        return this.http.post<any>(`/api/gen-font`, {})
     }
 }
