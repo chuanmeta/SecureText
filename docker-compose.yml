@@ -1,5 +1,22 @@
 version: "3.9"
 
+volumes:
+  font-base:
+    driver: local
+    driver_opts:
+      type: none
+      o: bind
+      device: /root/app-test/font-base
+    external: true
+
+  font-res:
+    driver: local
+    driver_opts:
+      type: none
+      o: bind
+      device: /root/app-test/res
+    external: true
+
 networks:
   frontend:
     driver: bridge
@@ -16,6 +33,9 @@ services:
       - "8000"  # nội bộ
     networks:
       - backend
+    volumes:
+      - font-base:/font-base:rw
+      - font-res:/res:rw
 
   springboot:
     build: ./be
