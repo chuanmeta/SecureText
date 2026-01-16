@@ -7,7 +7,6 @@ volumes:
       type: none
       o: bind
       device: /root/app-test/font-base
-    external: true
 
   font-res:
     driver: local
@@ -15,7 +14,6 @@ volumes:
       type: none
       o: bind
       device: /root/app-test/res
-    external: true
 
 networks:
   frontend:
