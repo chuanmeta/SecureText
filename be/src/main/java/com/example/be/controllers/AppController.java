@@ -4,6 +4,7 @@ import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -51,7 +52,7 @@ public class AppController {
     
     
     // Get Text Enpoint
-    @PostMapping("/get-text")
+    @PostMapping(value = "/get-text", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
     public ResponseEntity<?> getText(@RequestBody EncryptDTO dto) {
 
         Map<String, String> body = Map.of("fontName", dto.font,
