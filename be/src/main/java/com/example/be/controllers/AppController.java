@@ -51,7 +51,7 @@ public class AppController {
     
     
     // Get Text Enpoint
-    @GetMapping("/get-text")
+    @PostMapping("/get-text")
     public ResponseEntity<?> getText(@RequestBody EncryptDTO dto) {
 
         Map<String, String> body = Map.of("fontName", dto.font,

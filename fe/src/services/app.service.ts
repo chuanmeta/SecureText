@@ -12,7 +12,7 @@ export class AppService {
     }
 
     public getText(req: any): Observable<any>{
-        return this.http.get<any>(`/api/get-text`, req)
+        return this.http.post<any>(`/api/get-text`, req)
     }
 
     public genFont(): Observable<any>{
