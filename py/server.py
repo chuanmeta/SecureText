@@ -5,7 +5,7 @@ from services import font_service as fs
 
 app = FastAPI()
 
-@app.post("/create-font")
+@app.get("/create-font")
 def createFont():
     return {
         "font": fs.generateAndSaveFont(fs.generateMapping(0xE000))
