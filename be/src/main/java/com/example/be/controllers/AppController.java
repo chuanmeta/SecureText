@@ -1,6 +1,7 @@
 package com.example.be.controllers;
 
 import java.util.Map;
+import java.util.logging.Logger;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -56,11 +57,11 @@ public class AppController {
     @PostMapping(value = "/get-text", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
     public ResponseEntity<?> getText(@ModelAttribute EncryptDTO dto) {
 
-        Map<String, String> body = Map.of("fontName", dto.font,
-            "text", dto.text
-        );
-
         try {
+            Map<String, String> body = Map.of("fontName", dto.getFont(),
+                "text", dto.getText()
+            );
+
             @SuppressWarnings("unchecked")
             Map<String, Object> map = rt.postForObject(pythonServiceUrl + "/encrypt",
                 body,

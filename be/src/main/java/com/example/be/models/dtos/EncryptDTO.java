@@ -1,6 +1,9 @@
 package com.example.be.models.dtos;
 
+import lombok.Data;
+
+@Data
 public class EncryptDTO {
-    public String font;
-    public String text;
+    private String font;
+    private String text;
 }
