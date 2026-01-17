@@ -3,6 +3,8 @@ from fastapi import FastAPI
 
 from services import font_service as fs
 
+from models import EncrtyptDTO
+
 app = FastAPI()
 
 @app.get("/create-font")
@@ -12,8 +14,8 @@ def createFont():
     }
 
 @app.post("/encrypt")
-def encrypt(text: str, fontName: str):
+def encrypt(req: EncrtyptDTO):
     return {
-        "font": fs.getFont(fontName),
-        "data": fs.encode(text, fontName)
+        "font": fs.getFont(req.fontName),
+        "data": fs.encode(req.text, req.fontName)
     }
