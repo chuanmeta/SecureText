@@ -4,6 +4,7 @@ WORKDIR /app
 
 ENV PYTHONDONTWRITTEBYTEOCDE=1
 ENV PYTHONUNBUFFERED=1
+ENV PYTHONPATH=/app/src
 
 COPY pyproject.toml poetry.lock* ./
 
