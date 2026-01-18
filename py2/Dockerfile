@@ -5,7 +5,7 @@ WORKDIR /app
 ENV PYTHONDONTWRITTEBYTEOCDE=1
 ENV PYTHONUNBUFFERED=1
 
-COPY securetext.toml poetry.lock* ./
+COPY pyproject.toml poetry.lock* ./
 
 RUN pip install poetry \
     && poetry config virtualenvs.create false \
