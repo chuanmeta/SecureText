@@ -1,0 +1,16 @@
+FROM python:3.11-slim
+
+WORKDIR /app
+
+ENV PYTHONDONTWRITTEBYTEOCDE=1
+ENV PYTHONUNBUFFERED=1
+
+COPY securetext.toml poetry.lock* ./
+
+RUN pip install poetry \
+    && poetry config virtualenvs.create false \
+    && poetry install --no-dev
+
+COPY src /app/src
+
+CMD ["uvicorn", "securetext.main:app", "--host", "0.0.0.0", "--port", "8001"]
