@@ -6,4 +6,4 @@ class UserService:
         print("Init UserService")
 
     def getUser(self, userId: int) -> User:
-        return User(userId, "chuan")
+        return User(id=userId, name="chuan")
