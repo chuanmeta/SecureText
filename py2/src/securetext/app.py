@@ -1,5 +1,6 @@
 from fastapi import FastAPI
-from securetext.api.internal.users import router
+from securetext.api.internal.users import router as internal
+from securetext.api.welcome import router as public
 
 def createApp() -> FastAPI:
     app = FastAPI(
@@ -8,9 +9,9 @@ def createApp() -> FastAPI:
         redoc_url=None
     )
 
-    app.include_router(router, prefix="/internal")
+    app.include_router(internal, prefix="/internal")
 
-    app.include_router(router, prefix="/")
+    app.include_router(public, prefix="/public")
 
     return app
 
