@@ -1,0 +1,25 @@
+[tool.poetry]
+name = "SecureText"
+version = "0.1.0"
+description = "Test Secure text"
+authors = "chuandev"
+packages = [{include = "securetext", from = "src"}]
+
+[tool.poetry.dependencies]
+python = ">=3.11,<3.13"
+
+# Web framework
+fastapi = "^0.110.0"
+uvicorn = {extras = ["standard"], version = "^0.29.0}
+
+# Validation / settings
+pydantic = "^2.6.0"
+pydantic-settings = "^2.2.0"
+email-validator = "^2.1.0"
+
+# Logging / Utils (Load .env)
+python-dotenv = "^1.0.1"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

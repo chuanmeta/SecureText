@@ -11,7 +11,5 @@ def createApp() -> FastAPI:
 
     app.include_router(internal, prefix="/internal")
 
-    app.include_router(public, prefix="/public")
-
     return app
 
