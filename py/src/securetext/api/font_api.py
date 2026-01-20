@@ -1,7 +1,7 @@
 from fastapi import APIRouter
 
 from securetext.services import font_service as fs
-from securetext.models import EncryptRequest
+from py.src.securetext.models.encrypt_request import EncryptRequest
 
 router = APIRouter(prefix="/font")
 
