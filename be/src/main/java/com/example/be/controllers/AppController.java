@@ -49,7 +49,7 @@ public class AppController {
     // Generate font
     @PostMapping("/gen-font")
     public ResponseEntity<?> createFont() {
-        return ResponseEntity.ok(rt.getForObject(pythonServiceUrl + "/create-font", Map.class));
+        return ResponseEntity.ok(rt.getForObject(pythonServiceUrl + "/app/font/create-font", Map.class));
     }
     
     
