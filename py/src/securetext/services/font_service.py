@@ -22,7 +22,7 @@ def generateMapping(puaStart):
 
 # Create font => font, mapping => name
 def generateAndSaveFont(nameRootFont, mapping):
-    font = TTFont("{}{}", ac.ROOT_FONT, nameRootFont)
+    font = TTFont(f"{ac.ROOT_FONT}{nameRootFont}.ttf")
     forward, reverse = mapping
     for table in font["cmap"].tables:
         if table.platformID == 3 and table.platEncID in (1, 10):
