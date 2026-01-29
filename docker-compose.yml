@@ -24,16 +24,16 @@ networks:
 
 services:
   
-  # python-service:
-  #   build: ./py
-  #   container_name: python-service
-  #   expose:
-  #     - "8000"  # nội bộ
-  #   networks:
-  #     - backend
-  #   volumes:
-  #     - font-base:/font-base:rw
-  #     - font-res:/res:rw
+  python-service:
+    build: ./py
+    container_name: python-service
+    expose:
+      - "8000"  # nội bộ
+    networks:
+      - backend
+    volumes:
+      - font-base:/font-base:rw
+      - font-res:/res:rw
 
   springboot:
     build: ./be
@@ -43,8 +43,8 @@ services:
     networks:
       - backend
       - frontend
-    # depends_on:
-    #   - python-service
+    depends_on:
+      - python-service
 
   angular:
     build: ./fe
