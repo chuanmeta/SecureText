@@ -50,7 +50,7 @@ public class AppController {
     public ResponseEntity<?> getText(@ModelAttribute EncryptDTO dto) {
 
         try {
-            Map<String, String> body = Map.of("fontName", dto.getFont(),
+            Map<String, String> body = Map.of("font", dto.getFont(),
                 "text", dto.getText()
             );
 
