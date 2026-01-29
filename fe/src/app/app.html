@@ -1,5 +1,6 @@
 <div>
     <h2>Generate</h2>
+    <input type="text" [(ngModel)]="rootFontGen">
     <button (click)="generateFont()">Generate Font</button>
     <div>
         <p *ngFor="let log of logs; let i = index">{{log}}</p>

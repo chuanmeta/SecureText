@@ -3,6 +3,7 @@ import { RouterOutlet } from '@angular/router';
 import { AppService } from '../services/app.service';
 import { FormsModule, NgForm } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import FontConfig from './configs/font.config';
 
 @Component({
   selector: 'app-root',
@@ -16,11 +17,17 @@ export class App {
   font: string = "";
   text: string = "";
   decode: string = "";
+  rootFontGen: string = FontConfig.ROOT_FONT;
 
   constructor(private appService: AppService){}
   
   generateFont(): void {
-    this.appService.genFont().subscribe({
+
+    let fontGen = this.rootFontGen;
+    if(this.rootFontGen?.length == 0)
+      fontGen = FontConfig.ROOT_FONT;
+
+    this.appService.genFont(fontGen).subscribe({
       next: (res) =>{
         this.logs.push(res)
       },

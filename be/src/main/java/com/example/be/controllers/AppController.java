@@ -30,26 +30,18 @@ public class AppController {
 
     @Value("${python.service.url}")
     private String pythonServiceUrl;
+
+    @Value("${root.font.default}")
+    private String rootFontDefault;
     
-    @GetMapping("/mkdir")
-    public ResponseEntity<?> wellcome() {
-
-
-        Object obj = rt.getForObject(pythonServiceUrl + "/mkdir", String.class);
-
-        // return ResponseEntity.ok(Map.of("name", "springboot"));
-        return ResponseEntity.ok(obj);
-    }
-
-    @GetMapping("/")
-    public ResponseEntity<?> appInfo() {
-        return ResponseEntity.ok(rt.getForObject(pythonServiceUrl + "/", String.class));
-    }
 
     // Generate font
     @PostMapping("/gen-font")
-    public ResponseEntity<?> createFont() {
-        return ResponseEntity.ok(rt.getForObject(pythonServiceUrl + "/app/font/create-font", Map.class));
+    public ResponseEntity<?> createFont(@RequestParam(name = "fontName", required = false) String fontName) {
+
+        if(fontName == null) fontName = rootFontDefault;
+
+        return ResponseEntity.ok(rt.getForObject(pythonServiceUrl + "/app/font/create-font/" + fontName , Map.class));
     }
     
     
