@@ -15,5 +15,5 @@ def createFont(nameRootFont: str):
 def encrypt(req: EncryptRequest):
     return {
         "font": fs.getFont(req.font),
-        "data": fs.encode(req.text, req.fontName)
+        "data": fs.encode(req.text, req.font)
     }
