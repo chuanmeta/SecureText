@@ -43,8 +43,8 @@ services:
     networks:
       - backend
       - frontend
-    depends_on:
-      - python-service
+    # depends_on:
+    #   - python-service
 
   angular:
     build: ./fe
