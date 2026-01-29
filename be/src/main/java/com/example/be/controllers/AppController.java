@@ -55,7 +55,7 @@ public class AppController {
             );
 
             @SuppressWarnings("unchecked")
-            Map<String, Object> map = rt.postForObject(pythonServiceUrl + "/encrypt",
+            Map<String, Object> map = rt.postForObject(pythonServiceUrl + "app/font/encrypt",
                 body,
                 Map.class
             );
