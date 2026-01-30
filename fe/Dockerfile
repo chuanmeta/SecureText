@@ -14,6 +14,8 @@ RUN npm run build --prod
 FROM nginx:latest
 COPY --from=build /app/dist/fe/browser /usr/share/nginx/html
 
+# Make fonts directory
+
 EXPOSE 80
 
 CMD ["nginx", "-g", "daemon off;"]

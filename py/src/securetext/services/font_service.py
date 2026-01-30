@@ -58,4 +58,4 @@ def encode(text: str, fontName: str):
 
 # get font => 
 def getFont(fontName: str):
-    return "{}{}/{}.ttf".format(ac.ROOT_OUT_FONT, fontName, fontName)
+    return f"files/{fontName}/{fontName}.ttf"
